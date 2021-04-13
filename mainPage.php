@@ -4,6 +4,7 @@
 	$base = new layout;
 
 	$base->link='./style.css';
+<<<<<<< HEAD
 
 	$base->content ='
 	 <link rel="stylesheet" href="./jquery.bxslider.css">
@@ -29,5 +30,9 @@
 
 	'
 	;
+=======
+	$base->content = "본문 - 이벤트&공지 추가할 예정"; //본문
+
+>>>>>>> e1a24575a817b6b5a7a84f1860a3ec9b681b6503
 	$base->LayoutMain(); //레이아웃 출력
 ?>
