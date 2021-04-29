@@ -4,7 +4,6 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>검색창 연습</title>
 	<style>
 		table {
 			border-style: solid; border-width: medium;  border-radius: 5em; padding: 0.3em 1.5em; background: #F9F9F9; margin-left: 5px; border-color: #33afe9;
