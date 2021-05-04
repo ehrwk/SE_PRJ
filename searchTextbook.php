@@ -1,12 +1,7 @@
 <?php
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<style>
-		table {
-			border-style: solid; border-width: medium;  border-radius: 5em; padding: 0.3em 1.5em; background: #F9F9F9; margin-left: 5px; border-color: #33afe9;
+ $base -> style = table {
+			border-style: solid; border-width: medium;  border-radius: 5em; padding: 0.3em 1.5em; background: rgb(249, 249, 249); margin-left: 5px; border-color: rgb(51, 175, 233);
 		}
 
 		select{
@@ -15,12 +10,12 @@
 			font-family: inherit;
 		}
 
-		input:focus {outline-color: #33afe9}
+		input:focus {outline-color: rgb(51, 175, 233)}
 
-	</style>
-</head>
-<body>
-	<form method = "get" action="/save.php">
+
+ public function searchbox()
+ {
+ 	echo "<form method = "get" action="/save.php">
 	<table>
 		<th>
 			<select category>
@@ -34,11 +29,10 @@
 			<input type="text" name="book_name" style="width:20em; height: 2em; border: none;">
 		</th>
 		<th>
-			<input type="submit" value="검색">	/* class="" 버튼이미지 넣기 */
+			<input type="submit" value="검색">
 		</th>
 	</table>
-	</form>
-</body>
-</html>
+	</form>";  /*<input type="submit" value="검색">에 class="" 버튼이미지 넣기 */
+ }
 
 ?>
