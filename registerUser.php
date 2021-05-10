@@ -72,12 +72,10 @@
   	}
 	else {
 		$encryptedPw = password_hash($pw, PASSWORD_DEFAULT);
-     	$sqlRegUser = "INSERT INTO member(name, id, pw, email, permit) VALUES($name, $id, $encryptedPw, $email, 1)";
-     	$reg_res = mysquli_query($db_conn, $sqlRegUser);
-     	mysqli_close($db_conn);
-     	echo "<script>location.replace('login.php');<script>";
-     	/*
-     	if($reg_res == true){
+     	$sqlRegUser = "INSERT INTO member(name, id, pw, email, permit) VALUES('$name','$id','$encryptedPw','$email',1);";
+       	$sql_res = mysqli_query($db_conn, $sqlRegUser);
+   		
+     	if($sql_res == true){
 			echo"<script>
 				alert('정상적으로 가입되었습니다. 로그인 화면으로 이동합니다.');
 				location.replace('login.php');
@@ -91,6 +89,5 @@
 				exit();
 			</script>";
 		}
-		*/
 	}
 ?>
