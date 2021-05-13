@@ -1,35 +1,32 @@
 <?php
-$conn = mysqli_connect(
-	'localhost', //주소
-	'root',		//id
-	'unix21002',//pw
-	'test',		//database_name
-);
+  
+   $conn = mysqli_connect(
+  'localhost',      //주소
+  'bitnami',        //username
+  '1234',           //pw
+  'book'            //database_name
+ ) or die('fail');
 
-$filtered = array(
-    'cre_cate'=>mysqli_real_escape_string($conn, $_POST['cre_cate']),
-    'cate_dec'=>mysqli_real_escape_string($conn, $_POST['cate_dec']),
-    'book_name'=>mysqli_real_escape_string($conn, $_POST['book_name']),
-    'author'=>mysqli_real_escape_string($conn, $_POST['author']),
-    'price'=>mysqli_real_escape_string($conn, $_POST['price'])
-  );
- 
-$sql = "
-  INSERT INTO topic
-    (cre_cate, cate_dec, book_name, author, price)
-    VALUES( 
-      '{$filtered['cre_cate']}',
-      '{$filtered['cate_dec']}',
-      '{$filtered['book_name']}',
-      '{$filtered['author']}',
-      '{$filtered['price']}',
-    )
-";
+  $category = $_POST['category'];
+  $cate_dec = $_POST['cate_dec'];
+  $book_name = $_POST['book_name'];
+  $author = $_POST['author'];
+  $price = $_POST['price'];
+
+  $sql = "INSERT INTO bookdata (category, cate_dec, book_name, author, price) VALUES('$category', '$cate_dec', '$book_name', '$author', '$price');";
+
+  $result = mysqli_query($conn, $sql);
+
+  mysqli_close($conn);
+
+ /*
 $result = mysqli_query($conn, $sql);
 if($result === false){
   echo '저장하는 과정에서 문제가 생겼습니다. 관리자에게 문의해주세요';
   error_log(mysqli_error($conn));
-} else {
+} 
+else {
   echo '성공했습니다. <a href="create_book_list.php">돌아가기</a>';
-}
+}*/
+
 ?>

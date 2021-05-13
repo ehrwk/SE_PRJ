@@ -22,14 +22,14 @@ a:visited {text-decoration: none; color: #333333;
 <body>
 
 <h1> <p align=center>로그인</p> </h1>
-<form method='post' action='logincheck.php'>
+<form method='post' action='loginchecks.php'>
 	<table align=center border=0 cellspacing=0 width=500 bordercolordark=white bordercolorlight=#999999>
 		<tr>
 			<td class="topline" width=150>
 				<p align=center>아이디</p>
 			</td>
 			<td class="topline" width=200>
-				<input type="id" name="id" style="height:25px">
+				<input type="text" name="id" style="height:25px">
 			</td>
 
 			<td class="buttonline" rowspan="2" align=center>
