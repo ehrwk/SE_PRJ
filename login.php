@@ -51,7 +51,7 @@ a:visited {text-decoration: none; color: #333333;
 			<tr>
 				<td colspan=3 align=center>
 
-					<a href="register.php" target="_self" style="text-decoration:none">회원가입 하시겠습니까?</p>
+					<a href="signUpForm.php" target="_self" style="text-decoration:none">회원가입 하시겠습니까?</p>
 					</td>
 				</tr>
 			</table>

@@ -1,6 +1,6 @@
 <?php
 	class AdminLayout{
-
+		public $content;
 		//레이아웃 출력
 		public function AdminLayoutMain(){
 			echo "<!DOCTYPE html>";
@@ -35,9 +35,10 @@
 						<li><a href='#'>상품 관리</a></li>
 						<li><a href='#'>공지/이벤트 관리</a></li>
 					</ul>
-				<article>
-				</article>
-			</section>";
+					<article><center>
+						".$this->content."
+					</center></article>
+				</section>";
 		}
 
 		//footer 레이아웃

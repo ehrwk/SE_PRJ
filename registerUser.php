@@ -19,9 +19,9 @@
     $sql = "SELECT email FROM member WHERE email = '$email';"; //기존 db의 이메일 정보와 비교
     $sql_res = mysqli_query($db_conn, $sql);
     while ($db_row = mysqli_fetch_array($sql_res)){
-      $id_dup = $db_row['email'];
+      $email_dup = $db_row['email'];
     }
-    if($id == $id_dup){
+    if($email == $email_dup){
     	$chkEmail_dup = 1;
     }
 
@@ -72,7 +72,7 @@
   	}
 	else {
 		$encryptedPw = password_hash($pw, PASSWORD_DEFAULT);
-     	$sqlRegUser = "INSERT INTO member(name, id, pw, email, permit) VALUES('$name','$id','$encryptedPw','$email',1);";
+     	$sqlRegUser = "INSERT INTO member(name, id, pw, email, permit) VALUES('$name','$id','$encryptedPw','$email', 1);";
        	$sql_res = mysqli_query($db_conn, $sqlRegUser);
    		
      	if($sql_res == true){

@@ -26,3 +26,30 @@ footer{
 	position: sticky; 
 	bottom: 0;
 }
+
+#search_box{
+	border-style: solid; 
+	border-width: medium;  
+	border-radius: 5em; 
+	padding: 0.3em 1.5em 0.3em 1.5em;
+	background: rgb(249, 249, 249); 
+	margin-left: 5px; 
+	border-color: rgb(51, 175, 233);
+}
+
+#categoty{
+	width: 100px; 
+	padding: 0.4em 0.3em; 
+	border: none; 
+	font-family: inherit;
+}
+
+input:focus{
+	outline-color: rgb(51, 175, 233)
+}
+
+#search_css{
+	width:  20em;
+	height: 2em; 
+	border: none;
+}
