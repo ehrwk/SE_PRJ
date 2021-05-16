@@ -1,28 +1,163 @@
 container{margin:0 auto;}
 
 header{
-	width: 95%;
-	background: #bbb;
-	margin: 1% 2% 0 2%;
-	padding: 1%;
-	position: sticky; 
-	top: 0;
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+
+    height: 185px;
+    z-index: 10;
+    background: #fff;
 }
 
 article{
-	width: 95%; 
-	height: 300px;
-	margin: 1% 2% 0 2%;
-	padding: 1%;
-	border: 1px solid black;
+	width: 75%;
+    margin-top: 200px;
+    padding: 10px;
+    border: 1px solid black;
+    display: inline-block;
 }
 
 footer{
-	clear: both;
-	width: 95%;
-	background : #bbb;
-	margin: 1% 0 0 2%;
-	padding: 1%;
-	position: sticky; 
-	bottom: 0;
+	position: fixed;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+
+    height: 45px;
+    z-index: 10;
+    align-items: center;
+
+    background: #bbb;
+}
+
+#search_box{
+	border-style: solid; 
+	border-width: medium;  
+	border-radius: 5em; 
+	padding: 0.3em 1.5em 0.3em 1.5em;
+	background: rgb(249, 249, 249); 
+	margin-left: 5px; 
+	border-color: rgb(51, 175, 233);
+}
+
+#categoty{
+	width: 100px; 
+	padding: 0.4em 0.3em; 
+	border: none; 
+	font-family: inherit;
+}
+
+input:focus{
+	outline-color: rgb(51, 175, 233)
+}
+
+#search_css{
+	width:  20em;
+	height: 2em; 
+	border: none;
+}
+
+#menu{
+    list-style: none;
+    background: rgb(51, 175, 233);
+
+    width: 20%;
+    height: 250px;
+    margin-top: 200px;
+    padding: 5px;
+
+    display: inline-block;
+    vertical-align: top;
+}
+
+#menu li{
+    position: relative;
+    margin: 10px;
+    padding: 5px;
+}
+
+#menu li a{
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15pt;
+    padding: 5px;
+    margin: 0;
+    color: white;
+}
+
+#menu li:hover>a{
+    color: black;
+    margin: 0;
+    padding: 5px;
+}
+
+#subMenu1{
+    list-style: none;
+    position: absolute;
+
+    width: 10%;
+    left: 10%;
+    top: 230px;
+
+    background: rgb(70, 190, 250);
+    text-align: center;
+
+    margin: 0;
+    padding: 0;
+    z-index: 5;
+}
+
+#subMenu1 li{
+    float: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
+#subMenu1 li a{
+    font-weight: normal;
+    color: black;
+    display: block;
+}
+
+#subMenu1 li:hover>a{
+    background: rgb(45, 120, 190);
+    color: white;
+}
+
+#subMenu2{
+    list-style: none;
+    position: absolute;
+
+    width: 10%;
+    left: 10%;
+    top: 290px; 
+
+    background: rgb(70, 190, 250);
+    text-align: center;
+
+    margin: 0;
+    padding: 0;
+    z-index: 5;
+}
+
+#subMenu2 li{
+    float: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
+#subMenu2 li a{
+    font-weight: normal;
+    color: black;
+    display: block;
+}
+
+#subMenu2 li:hover>a{
+    background: rgb(45, 120, 190);
+    color: white;
 }
