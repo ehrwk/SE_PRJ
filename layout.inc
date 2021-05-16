@@ -2,7 +2,7 @@
 session_start();
 
 	class layout{
-		public $link = "./style.css"; //css 링크 태그
+		public $link; //css 링크 태그
 		public $style;
 		public $content; //메인 content
 		public $board; //게시판
@@ -26,17 +26,18 @@ session_start();
 
 		//스타일 추가
 		public function LayoutStyle(){
-			echo "<link rel='stylesheet' type='text/css' href='".$this->link."'>";
+			echo "<link rel='stylesheet' type='text/css' href='style.css'>";
 			echo "<style>".$this->style."</style>";
 		}
 
 		//header 레이아웃 
 		public function LayoutHeader(){
 			echo "<header>
-					<div><center>
-					<h1>
+				<center>
+					<h1 style='display: inline-block;'>
 					<a href='mainPage.php'><img src='./img/sampleLogo.png' height='100' width='100'></a>
 					</h1>
+					<div style='display: inline-block;'>
 					<form>
 					<table id = 'search_box'>
 					<th>
@@ -55,25 +56,71 @@ session_start();
 					</th>
 					</table>
 					</form>
-					
-
-				    <h5><a href='login.php'>로그인</a>|<a href='signUpForm.php'>회원가입</a></h5>
-				</center></div>
-
+					</div>
+				    <h5 style='margin-top: 0;'><a href='login.php'>로그인</a>|<a href='signUpForm.php'>회원가입</a></h5>
+				</center>
 				</header>";
 		}
 
 		//content 레이아웃
 		public function LayoutContent(){
 			echo "<section>
+					<ul id = 'menu'>
+						<li><a href='javascript: DisplayMenu(1);'>국내도서</a></li>
+							<ul id = 'subMenu1' style = 'display: none;'>
+								<li><a href='#'>총류</a></li>
+								<li><a href='#'>철학</a></li>
+								<li><a href='#'>종교</a></li>
+								<li><a href='#'>사회과학</a></li>
+								<li><a href='#'>자연과학</a></li>
+								<li><a href='#'>기술과학</a></li>
+								<li><a href='#'>예술</a></li>
+								<li><a href='#'>언어</a></li>
+								<li><a href='#'>문학</a></li>
+								<li><a href='#'>역사</a></li>
+							</ul>
+						<li><a href='javascript: DisplayMenu(2);'>국외도서</a></li>
+							<ul id = 'subMenu2' style = 'display: none;'>
+								<li><a href='#'>총류</a></li>
+								<li><a href='#'>철학</a></li>
+								<li><a href='#'>종교</a></li>
+								<li><a href='#'>사회과학</a></li>
+								<li><a href='#'>자연과학</a></li>
+								<li><a href='#'>기술과학</a></li>
+								<li><a href='#'>예술</a></li>
+								<li><a href='#'>언어</a></li>
+								<li><a href='#'>문학</a></li>
+								<li><a href='#'>역사</a></li>
+							</ul>
+						<li><a href='#'>중고도서</a></li>
+						<li><a href='#'>공지/이벤트</a></li>
+					</ul>
 			<article><center>".$this->content."</center></article>
-			</section>";
+			</section>
+			<script>
+				function DisplayMenu(n){
+					if(n == 1){
+						var m = document.getElementById('subMenu1');
+					}
+					else if(n == 2){
+						var m = document.getElementById('subMenu2');
+					}
+            		if(m.style.display == 'none'){
+              			m.style.display = 'block';
+         			}
+         			else{
+                		m.style.display = 'none';
+           			}
+				}
+			</script>";
 		}
 
 		//footer 레이아웃
 		public function LayoutFooter(){
 			echo"<footer>
-				<a href='team.php'>footer - 팀원&팀명 여기다가 추가할 예정</a>
+				<div>
+					<a href='team.php'>사업자정보</a> | <a href = 'https://www.law.go.kr/%ED%96%89%EC%A0%95%EA%B7%9C%EC%B9%99/%EB%94%94%EC%A7%80%ED%84%B8%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%9D%B4%EC%9A%A9%20%ED%91%9C%EC%A4%80%EC%95%BD%EA%B4%80'>이용약관</a>
+				</div>
 				</footer>";
 		}
 	}
