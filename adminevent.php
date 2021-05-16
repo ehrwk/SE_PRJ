@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<style type="text/css">
-#wrap {
-	margin: auto;
-	width: 80%;
-}
-table .ontop{
-	background-color: gray;
-}
-table{
-	width: 100%;
-	margin: auto;
-	border-collapse: collapse;
-	border:1px solid black;
-	text-align: left;
-}
-td,th{
-min-height: 10px;
-border:1px solid black;
-}
-th{
-	width: 10%;
-}
- .btn{
-float: right;	
-}</style>
-</head>
-<body>
-	<form method="get" action="adminevent_write.php">
+<?php
+	include_once "adminLayout.inc";
+	$admin = new AdminLayout;
+
+	 $admin->content ="
+	<form method='get' action='adminevent_write.php'>
 		<div>
 <table>
 	<tr>
@@ -40,6 +15,10 @@ float: right;
 		<td>제목</td>
 		<td><input type=text name=title ></td>
 	</tr>
+	<tr>
+		<td>이미지</td>
+		<td><input type='file' name='imageform'/></td>
+	</tr>
 
 	<tr>
 		<td>내용</td>
@@ -47,9 +26,10 @@ float: right;
 	</tr>
 </table>
 <center>
-	<input type="submit" value="작성">
+	<input type='submit' value='작성'>
 </center></div>
 </form>
+";
 
-</body>
-</html>
+	$admin->AdminLayoutMain();
+?>
