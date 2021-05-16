@@ -1,0 +1,70 @@
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 140px;
+    padding-top: 15px;
+    padding-left: 20px;
+    z-index: 10;
+
+    background: #bbb;
+}
+
+article{
+    width: 75%;
+    height: 450px;
+    margin-top: 160px;
+    padding: 10px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 45px;
+    z-index: 10;
+    align-items: center;
+
+    background: #bbb;
+}
+
+#menu{
+    list-style: none;
+    background: rgb(51, 175, 233);
+
+    width: 20%;
+    height: 200px;
+    margin-top: 160px;
+    padding: 5px;
+
+    display: inline-block;
+    vertical-align: top;
+}
+
+#menu li{
+    position: relative;
+    margin: 10px;
+    padding: 5px;
+}
+
+#menu li a{
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15pt;
+    padding: 5px;
+    margin: 0;
+    color: white;
+}
+
+#menu li:hover>a{
+    color: black;
+    margin: 0;
+    padding: 5px;
+}
