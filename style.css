@@ -1,6 +1,7 @@
 container{margin:0 auto;}
 
 header{
+<<<<<<< HEAD
 	width: 95%;
 	background: #bbb;
 	margin: 1% 2% 0 2%;
@@ -25,6 +26,37 @@ footer{
 	padding: 1%;
 	position: sticky; 
 	bottom: 0;
+=======
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+
+    height: 185px;
+    z-index: 10;
+    background: #fff;
+}
+
+article{
+	width: 75%;
+    margin-top: 200px;
+    padding: 10px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+footer{
+	position: fixed;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+
+    height: 45px;
+    z-index: 10;
+    align-items: center;
+
+    background: #bbb;
+>>>>>>> parent of 77b3e74 (Seohui)
 }
 
 #search_box{

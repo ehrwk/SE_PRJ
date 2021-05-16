@@ -55,10 +55,17 @@ session_start();
 					</th>
 					</table>
 					</form>
+<<<<<<< HEAD
 					
 
 				    <h5><a href='login.php'>로그인</a>|<a href='signUpForm.php'>회원가입</a></h5>
 				</center></div>
+=======
+					</div>
+
+				    <h5 style='margin-top: 0;'><a href='login.php'>로그인</a>|<a href='signUpForm.php'>회원가입</a></h5>
+				</center>
+>>>>>>> parent of 77b3e74 (Seohui)
 
 				</header>";
 		}
