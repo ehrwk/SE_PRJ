@@ -1,50 +1,37 @@
 header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 140px;
-    padding-top: 15px;
-    padding-left: 20px;
-    z-index: 10;
-
+    width: 95%;
     background: #bbb;
+    margin: 1% 2% 0 2%;
+    padding: 1%;
+    position: sticky; 
+    top: 0;
 }
 
 article{
-    width: 75%;
-    height: 450px;
-    margin-top: 160px;
-    padding: 10px;
+    width: 1200px;
+    height: 300px;
+    margin: 5px 5px 5px 300px;
+    padding: 0;
     border: 1px solid black;
-    display: inline-block;
 }
 
 footer{
-    position: fixed;
+    clear: both;
+    width: 95%;
+    background : #bbb;
+    margin: 1% 0 0 2%;
+    padding: 1%;
+    position: sticky; 
     bottom: 0;
-    left: 0;
-    right: 0;
-
-    height: 45px;
-    z-index: 10;
-    align-items: center;
-
-    background: #bbb;
 }
 
 #menu{
     list-style: none;
-    background: rgb(51, 175, 233);
-
-    width: 20%;
+    width: 250px;
     height: 200px;
-    margin-top: 160px;
+    background: rgb(51, 175, 233);
+    margin: 5px 5px 5px 30px;
     padding: 5px;
-
-    display: inline-block;
-    vertical-align: top;
 }
 
 #menu li{

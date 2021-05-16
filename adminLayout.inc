@@ -21,10 +21,9 @@
 		//header 레이아웃 
 		public function AdminLayoutHeader(){
 			echo "<header>
-					<div style='display: inline-block; margin-right: 20px; vertical-align: top;'>
+					<div>
 						<a href='adminMainPage.php'><img src='./img/sampleLogo.png' height='100' width='100'></a>
 					</div>
-					<h1 style='display: inline-block; font-size: 30pt;'>관리자화면</h1>
 				</header>";
 		}
 
@@ -45,9 +44,7 @@
 		//footer 레이아웃
 		public function AdminLayoutFooter(){
 			echo"<footer>
-					<div>
-					<a href='team.php'>사업자정보</a> | <a href = 'https://www.law.go.kr/%ED%96%89%EC%A0%95%EA%B7%9C%EC%B9%99/%EB%94%94%EC%A7%80%ED%84%B8%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%9D%B4%EC%9A%A9%20%ED%91%9C%EC%A4%80%EC%95%BD%EA%B4%80'>이용약관</a>
-					</div>
+					<a href='team.php'>footer - 팀원&팀명 여기다가 추가할 예정</a>
 				</footer>";
 		}
 	}
