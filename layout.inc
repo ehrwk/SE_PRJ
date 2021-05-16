@@ -34,10 +34,15 @@ session_start();
 		public function LayoutHeader(){
 			echo "<header>
 				<div id='logo'><center>
+<<<<<<< HEAD
 					<h1><a href='mainPage.php'>header - 로고, 검색창, 회원가입 추가할 예정</a></h1>
 				    <h6><a href='login.php'>로그인</a></h6>
 				</center></div>
 
+=======
+					<h1><a href='mainPage.php'>header - 로고, 검색창, 로그인, 회원가입 추가할 예정</a></h1>
+				</center></div>
+>>>>>>> 30db3fc877410926939b15500df38ac609ef5ebc
 				</header>";
 		}
 
