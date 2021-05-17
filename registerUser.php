@@ -76,10 +76,11 @@
        	$sql_res = mysqli_query($db_conn, $sqlRegUser);
    		
      	if($sql_res == true){
-			echo"<script>
-				alert('정상적으로 가입되었습니다. 로그인 화면으로 이동합니다.');
-				location.replace('login.php');
-			</script>";
+			echo "<script> alert('정상적으로 가입되었습니다.'); </script>";
+			session_start();
+			$_SESSION['id'] = $id;
+			$_SESSION['name'] = $name;
+			echo "<script> location.href = 'mainPage.php'; </script>";
 			mysqli_close($db_conn);
 		}
 		else{

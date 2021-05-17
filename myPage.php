@@ -1,12 +1,9 @@
 <?php
 	require_once './layout.inc';
 	$base = new Layout;
+	session_start();
 
 	$base->style = "
-		a{ 
-			text-decoration: none;
-			color: black; 
-		}
 		#myInfo{
 			width: 12%;
 			height: 80px;
@@ -22,6 +19,10 @@
 			margin-left: 25px;
 			display: inline-block;
 			float: left;
+		}
+		#info_des a{ 
+			text-decoration: none;
+			color: black; 
 		}
 	";
 
