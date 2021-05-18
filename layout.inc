@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 	class layout{
 		public $link; //css 링크 태그
 		public $style;
@@ -10,6 +8,7 @@ session_start();
 
 		//레이아웃 출력
 		public function LayoutMain(){
+			session_start();
 			echo "<!DOCTYPE html>\n<html lang = 'ko'>";
 
 			echo "<head>\n<meta charset = 'utf-8'/>";
@@ -19,6 +18,7 @@ session_start();
 
 			echo "<body>\n<div id = 'container'>";
 			echo	$this->LayoutHeader(); //header 레이아웃
+			echo 	$this->LayoutMenu(); //menu 레이아웃
 			echo	$this->LayoutContent(); //content 레이아웃
 			echo	$this->LayoutFooter(); //footer 레이아웃
 			echo "</div></body>\n</html>";
@@ -37,7 +37,6 @@ session_start();
 					<h1 style='display: inline-block;'>
 					<a href='mainPage.php'><img src='./img/sampleLogo.png' height='100' width='100'></a>
 					</h1>
-
 					<div style='display: inline-block;'>
 					<form>
 					<table id = 'search_box'>
@@ -57,18 +56,20 @@ session_start();
 					</th>
 					</table>
 					</form>
-					</div>
-
-				    <h5 style='margin-top: 0;'><a href='login.php'>로그인</a>|<a href='signUpForm.php'>회원가입</a></h5>
-				</center>
-
+					</div>";
+			if(!$_SESSION['id'] && !$_SESSION['name']){
+				echo "<h5 style='margin-top: 0;'><a href='login.php'>로그인 </a>|<a href='signUpForm.php'> 회원가입</a></h5>";
+			}
+			else{
+				echo "<h5 style='margin-top: 0;'><a href='myPage.php'>".$_SESSION['name']."</a>님, 환영합니다. |<a href='#'> 장바구니 </a>|<a href='logout.php'> 로그아웃</a></h5>";
+			}
+				echo "</center>
 				</header>";
 		}
 
-		//content 레이아웃
-		public function LayoutContent(){
-			echo "<section>
-					<ul id = 'menu'>
+		//menu 레이아웃
+		public function LayoutMenu(){
+			echo "<ul id = 'menu'>
 						<li><a href='javascript: DisplayMenu(1);'>국내도서</a></li>
 							<ul id = 'subMenu1' style = 'display: none;'>
 								<li><a href='#'>총류</a></li>
@@ -98,10 +99,7 @@ session_start();
 						<li><a href='#'>중고도서</a></li>
 						<li><a href='#'>공지/이벤트</a></li>
 					</ul>
-			<article><center>".$this->content."</center></article>
-			</section>
-
-			<script>
+				<script>
 				function DisplayMenu(n){
 					if(n == 1){
 						var m = document.getElementById('subMenu1');
@@ -116,7 +114,11 @@ session_start();
                 		m.style.display = 'none';
            			}
 				}
-			</script>";
+				</script>";
+		}
+		//content 레이아웃
+		public function LayoutContent(){
+			echo "<article><center>".$this->content."</center></article>";
 		}
 
 		//footer 레이아웃
