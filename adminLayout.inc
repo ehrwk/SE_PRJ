@@ -3,6 +3,7 @@
 		public $content;
 		//레이아웃 출력
 		public function AdminLayoutMain(){
+			session_start();
 			echo "<!DOCTYPE html>";
 
 			echo "<head><meta charset = 'utf-8'/>
@@ -23,9 +24,14 @@
 			echo "<header>
 					<div style='display: inline-block; margin-right: 20px; vertical-align: top;'>
 						<a href='adminMainPage.php'><img src='./img/sampleLogo.png' height='100' width='100'></a>
-					</div>
-					<h1 style='display: inline-block; font-size: 30pt;'>관리자화면</h1>
-				</header>";
+					</div>";
+
+					echo"<h1 style='display: inline-block; font-size: 30pt;'>관리자화면</h1>";
+
+					if($_SESSION['id']=='admin'){
+					echo"<h3 style='display: inline-block;'><a href='logout.php' style='text-decoration: none;'>-로그아웃</a></h3>";
+				    }   
+				echo"</header>";
 		}
 
 		//content 레이아웃
