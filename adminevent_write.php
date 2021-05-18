@@ -9,7 +9,7 @@
 
 	$query = "INSERT INTO eventpage (number,title,content,date,hit,id)
 	VALUES (null,'$title','$content','$date',0,'$id')";
-	
+
 	if (empty($title)) {
 		echo "<script>alert('제목을 입력해주세요');
 		history.back()
