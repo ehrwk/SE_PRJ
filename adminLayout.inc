@@ -3,19 +3,25 @@
 		public $content;
 		//레이아웃 출력
 		public function AdminLayoutMain(){
+			session_start();
 			echo "<!DOCTYPE html>";
 
 			echo "<head><meta charset = 'utf-8'/>
-					<title>AdminPage</title>
-					<link rel='stylesheet' type='text/css' href='adminStyle.css'>
-				</head>";
+					<title>AdminPage</title>";
+			echo 	$this->AdminLayoutStyle();
+			echo "</head>";
 
 			echo "<body>";
 			echo	$this->AdminLayoutHeader(); //header 레이아웃
+			echo 	$this->AdminLayoutMenu();
 			echo	$this->AdminLayoutContent(); //content 레이아웃
 			echo	$this->AdminLayoutFooter(); //footer 레이아웃
 			echo "</body>
 				</html>";
+		}
+
+		public function AdminLayoutStyle(){
+			echo "<link rel='stylesheet' type='text/css' href='adminStyle.css'>";
 		}
 
 		//header 레이아웃 
@@ -23,23 +29,29 @@
 			echo "<header>
 					<div style='display: inline-block; margin-right: 20px; vertical-align: top;'>
 						<a href='adminMainPage.php'><img src='./img/sampleLogo.png' height='100' width='100'></a>
-					</div>
-					<h1 style='display: inline-block; font-size: 30pt;'>관리자화면</h1>
-				</header>";
+					</div>";
+
+					echo"<h1 style='display: inline-block; font-size: 30pt;'>관리자화면</h1>";
+
+					if($_SESSION['id']=='admin'){
+					echo"<h3 style='display: inline-block;'><a href='logout.php' style='text-decoration: none;'>-로그아웃</a></h3>";
+				    }   
+				echo"</header>";
+		}
+
+		public function AdminLayoutMenu(){
+			echo "<ul id = 'menu'>
+						<li><a href='#'>회원 관리</a></li>
+						<li><a href='#'>상품 관리</a></li>
+						<li><a href='#'>공지/이벤트 관리</a></li>
+			</ul>";
 		}
 
 		//content 레이아웃
 		public function AdminLayoutContent(){
-			echo "<section>
-					<ul id = 'menu'>
-						<li><a href='#'>회원 관리</a></li>
-						<li><a href='#'>상품 관리</a></li>
-						<li><a href='#'>공지/이벤트 관리</a></li>
-					</ul>
-					<article><center>
+			echo "<article><center>
 						".$this->content."
-					</center></article>
-				</section>";
+					</center></article>";
 		}
 
 		//footer 레이아웃

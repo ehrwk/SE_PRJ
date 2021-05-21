@@ -70,8 +70,8 @@
 		//menu 레이아웃
 		public function LayoutMenu(){
 			echo "<ul id = 'menu'>
-						<li><a href='javascript: DisplayMenu(1);'>국내도서</a></li>
-							<ul id = 'subMenu1' style = 'display: none;'>
+						<li onmouseover = 'DisplayMenu(1);' onmouseout = 'DisapearMenu(1);'><a href='#'>국내도서</a></li>
+							<ul id = 'subMenu1' style = 'display: none;' onmouseover = 'DisplayMenu(1);' onmouseout = 'DisapearMenu(1);'>
 								<li><a href='#'>총류</a></li>
 								<li><a href='#'>철학</a></li>
 								<li><a href='#'>종교</a></li>
@@ -83,8 +83,8 @@
 								<li><a href='#'>문학</a></li>
 								<li><a href='#'>역사</a></li>
 							</ul>
-						<li><a href='javascript: DisplayMenu(2);'>국외도서</a></li>
-							<ul id = 'subMenu2' style = 'display: none;'>
+						<li onmouseover = 'DisplayMenu(2);' onmouseout = 'DisapearMenu(2);'><a href='#'>국외도서</a></li>
+							<ul id = 'subMenu2' style = 'display: none;' onmouseover = 'DisplayMenu(2);' onmouseout = 'DisapearMenu(2);'>
 								<li><a href='#'>총류</a></li>
 								<li><a href='#'>철학</a></li>
 								<li><a href='#'>종교</a></li>
@@ -112,6 +112,21 @@
          			}
          			else{
                 		m.style.display = 'none';
+           			}
+				}
+
+				function DisapearMenu(n){
+					if(n == 1){
+						var m = document.getElementById('subMenu1');
+					}
+					else if(n == 2){
+						var m = document.getElementById('subMenu2');
+					}
+            		if(m.style.display == 'block'){
+              			m.style.display = 'none';
+         			}
+         			else{
+                		m.style.display = 'block';
            			}
 				}
 				</script>";
