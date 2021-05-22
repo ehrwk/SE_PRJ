@@ -1,59 +1,96 @@
 <?php
-	include_once "./layout.inc";
+  include_once "./layout.inc";
+  session_start();
+  $base = new layout;
 
-	$base = new layout;
+  $base->link='./style.css';
 
-	$base->link='./style.css';
+//예지
+    $conn =mysqli_connect("localhost","bitnami","1234","book") or die("connection fail");
+    $image_num = $_GET["image_num"];
 
-	$base->content ='
-	 <link rel="stylesheet" href="./jquery.bxslider.css">
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	 <script src="./jquery.bxslider.min.js"></script>
+    $sql = "SELECT image_num FROM upfile ORDER BY image_num DESC LIMIT 7"; 
+    $result = mysqli_query($conn, $sql);
 
-  <script>
-    $(document).ready(function(){
-      $(".slider").bxSlider({
-      	auto:true, 
-      	captions:true,
-      	adaptiveHeight:true, 
-      	touchEnabled:false
-      });
-    });
-  </script>
+//첫번째 부분 추가 끝
+    //슬라이더용
+    $connect =mysqli_connect("localhost","bitnami","1234","event") or die("connection fail");
+    $number = $_GET["number"];
 
-  <div class="slider">
-    <div><a href="event.php?idx=1"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210413_wisdom/bnD_w01_f5cf99.jpg" title="첫번째 이벤트 페이지 설명"></a></div>
-    <div><a href="event.php?idx=2"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210408_spring/bnH_w01_fff294.jpg" title="두번째페이지 설명"></a></div>
-    <div><a href="event.php?idx=3"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/banner/210401/bnO_w01_cccccc.jpg" title="세번째페이지 설명"></a></div>
-  </div>
-
-	'
-	;
-
-	$base->content ='
-	 <link rel="stylesheet" href="./jquery.bxslider.css">
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	 <script src="./jquery.bxslider.min.js"></script>
-
-  <script>
-    $(document).ready(function(){
-      $(".slider").bxSlider({
-      	auto:true, 
-      	captions:true,
-      	adaptiveHeight:true, 
-      	touchEnabled:false
-      });
-    });
-  </script>
-
-  <div class="slider">
-    <div><a href="event.php?idx=1"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210413_wisdom/bnD_w01_f5cf99.jpg" title="첫번째 이벤트 페이지 설명"></a></div>
-    <div><a href="event.php?idx=2"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210408_spring/bnH_w01_fff294.jpg" title="두번째페이지 설명"></a></div>
-    <div><a href="event.php?idx=3"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/banner/210401/bnO_w01_cccccc.jpg" title="세번째페이지 설명"></a></div>
-  </div>
-
-	'
-	;
-	$base->content = "본문 - 이벤트&공지 추가할 예정"; //본문
-	$base->LayoutMain(); //레이아웃 출력
+    $today = date("Y-m-d");
+    $query = "SELECT number, title,finalDate FROM eventdb WHERE finalDate >='$today' ORDER BY number DESC";
+    //
+    $s_result = mysqli_query($connect, $query);
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <?php $base->LayoutStyle();?>
+   <link rel="stylesheet" href="./jquery.bxslider.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="./jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".slider").bxSlider({
+        auto:true, 
+        captions:true,
+        adaptiveHeight:true, 
+        touchEnabled:false
+      });
+    });
+  </script>
+</head>
+<body>
+  <?php 
+    $base->LayoutHeader();
+    $base->LayoutMenu();
+  ?>
+  <article><center>
+     <link rel="stylesheet" href="./jquery.bxslider.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="./jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".slider").bxSlider({
+        auto:true, 
+        captions:true,
+        adaptiveHeight:true, 
+        touchEnabled:false
+      });
+    });
+  </script>
+  <div class="slider">
+        <?php
+  while($s_row = mysqli_fetch_array($s_result)) {
+  ?>
+    <div><a href="eventview.php?number=<?php echo $s_row["number"]; ?>"><img src="admineventview_img.php?number=<?php echo $s_row["number"]; ?>" /style="height: 350px;"  title="<?php echo $s_row['title'];?>" ></a></div>
+<?php 
+}
+  mysqli_close($connect);?>
+  </div>
+
+  <div class="recentbook">
+<div style="background-color:rgb(51, 175, 233); border:1px solid; padding:10px;">
+  <small>최신등록도서</small>
+  </div>
+  <div style="background-color:#fff; border:1px solid; padding:10px;">
+    <?php
+  while($row = mysqli_fetch_array($result)) {
+  ?>
+    <a href="detail_page.php?book_num=<?php echo $row["image_num"]; ?>"><img style="display: inline-block; text-align: center;" src="book_image_view.php?image_num=<?php echo $row["image_num"]; ?>" width="100" height="130"/></a>
+
+    <?php   
+  }
+    mysqli_close($conn);
+?>
+  
+</div>
+</div>
+</center></article>
+  <?php
+    $base->LayoutFooter();
+  ?>
+</body>
+</html>
+
