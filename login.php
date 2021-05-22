@@ -1,9 +1,16 @@
+<?php
+  include_once "./layout.inc";
+  session_start();
+  $base = new layout;
 
+  $base->link='./style.css';
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-
+<link rel='stylesheet' type='text/css' href='style.css'>
 <style type="text/css">
 .topline{border-top:2px solid black;
 }
@@ -12,7 +19,7 @@
 .bottonline{border-top:2px solid black;
 	border-bottom:2px solid black;
 }
-a:visited {text-decoration: none; color: #333333;
+#goToSignUp a:visited {text-decoration: none; color: #333333;
 }
 
 </style>
@@ -20,64 +27,51 @@ a:visited {text-decoration: none; color: #333333;
 </head>
 
 <body>
-<<<<<<< HEAD
-<?php
-	require_once './layout.inc';
+	<?php 
+    $base->LayoutHeader();
+    $base->LayoutMenu();
+ 	?>
+			<article><center>
+				<h1> <p align=center>로그인</p> </h1>
+				<form method='post' action='userlogincheck.php'>
+				<table align=center border=0 cellspacing=0 width=500 bordercolordark=white bordercolorlight=#999999>
+					<tr>
+					<td class="topline" width=150>
+						<p align=center>아이디</p>
+					</td>
+					<td class="topline" width=200>
+						<input type="text" name="id" style="height:25px">
+					</td>
 
-	$base = new Layout;
+					<td class="buttonline" rowspan="2" align=center>
+					<button type="submit" style="height:100px; width:130px">로그인</button>
+					</td>
+					</tr>
 
-	$base->link = './style.css';
-?>
+					<tr>
+					<td class="botline" width=150>
+						<p align=center>비밀번호</p>
+					</td>
 
-<h1> <p align=center>로그인</p> </h1>
-<form method='post' action='logincheck.php'>
-=======
+					<td class="botline" width=200>
+						<input type="password" name="pw" style="height:25px">
+					</td>		
+					</tr>
 
-<h1> <p align=center>로그인</p> </h1>
-<form method='post' action='loginchecks.php'>
->>>>>>> upstream/master
-	<table align=center border=0 cellspacing=0 width=500 bordercolordark=white bordercolorlight=#999999>
-		<tr>
-			<td class="topline" width=150>
-				<p align=center>아이디</p>
-			</td>
-			<td class="topline" width=200>
-<<<<<<< HEAD
-				<input type="id" name="id" style="height:25px">
-=======
-				<input type="text" name="id" style="height:25px">
->>>>>>> upstream/master
-			</td>
+					<tr>
+						<td colspan=3 align=center>
 
-			<td class="buttonline" rowspan="2" align=center>
-				<button type="submit" style="height:100px; width:130px">로그인</button>
-				</td>
-			</tr>
-
-			<tr>
-				<td class="botline" width=150>
-					<p align=center>비밀번호</p>
-				</td>
-
-				<td class="botline" width=200>
-					<input type="password" name="password" style="height:25px">
-				</td>
-
-			</tr>
-
-			<tr>
-				<td colspan=3 align=center>
-
-<<<<<<< HEAD
-					<a href="register.php" target="_self" style="text-decoration:none">회원가입 하시겠습니까?</p>
-=======
-					<a href="signUpForm.php" target="_self" style="text-decoration:none">회원가입 하시겠습니까?</p>
->>>>>>> upstream/master
+					<a id = 'goToSignUp'href="signUpForm.php" target="_self" style="text-decoration:none">회원가입 하시겠습니까?</p>
 					</td>
 				</tr>
 			</table>
-		</form>
+			</form>
 
+			</center></article>
+			</section>
+			<?php
+    		$base->LayoutFooter();
+			?>
 	</body>
 
 	</html>
