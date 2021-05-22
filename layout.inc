@@ -32,6 +32,7 @@
 
 		//header 레이아웃 
 		public function LayoutHeader(){
+			session_start();
 			echo "<header>
 				<center>
 					<h1 style='display: inline-block;'>
@@ -61,7 +62,7 @@
 				echo "<h5 style='margin-top: 0;'><a href='login.php'>로그인 </a>|<a href='signUpForm.php'> 회원가입</a></h5>";
 			}
 			else{
-				echo "<h5 style='margin-top: 0;'><a href='myPage.php'>".$_SESSION['name']."</a>님, 환영합니다. |<a href='#'> 장바구니 </a>|<a href='logout.php'> 로그아웃</a></h5>";
+				echo "<h5 style='margin-top: 0;'><a href='myPage.php'>".$_SESSION['name']."</a>님, 환영합니다. |<a href='basket.php'> 장바구니 </a>|<a href='logout.php'> 로그아웃</a></h5>";
 			}
 				echo "</center>
 				</header>";
