@@ -15,7 +15,7 @@
 			<th>국내/국외/중고</th>
 			<th>10진분류</th>
 			<th>책이름</th>
-			<th>책상세정보</th>>
+			<th>책상세정보</th>
 			<th>저자</th>
 			<th>가격</th>
 			<th>책이미지</th>
@@ -50,6 +50,42 @@
 				<td><input type ="submit" value="등록"></td>
 			</tr>
 		</table>
+		</form>
+
+		<h1></h1>
+		<!--상품이름, 가격, 상품가격으로 필터링-->
+		책 필터링
+		<form action="book_list_sort.php" method = "post">
+			<table>
+				<th>책이름 검색</th>
+				<th>가격순으로 정렬</th>
+				<th>상품 가격 필터(10만원단위)</th>
+				<th>검색</th>
+				<tr>
+					<td><input type="text" name="book_name"></td>
+					<td>
+						<input type="radio" name = "sorting" value="0" <?php echo $row["sorting"]=="0" ? "checked" : "" ?>>정렬x
+						<input type="radio" name = "sorting" value="1" <?php echo $row["sorting"]=="1" ? "checked" : "" ?>>오름차순
+						<input type="radio" name = "sorting" value="2" <?php echo $row["sorting"]=="2" ? "checked" : "" ?>>내림차순
+					</td>
+					<td>
+						<div>
+							<label> Value1: </label>
+							<input type="range" name="range_price1" min="0" max="10" step="1" value="0" oninput="document.getElementById('value1').innerHTML=this.value;">
+							<span id="value1"></span>
+						</div>
+						<div>
+							<label> Value2: </label>
+							<input type="range" name="range_price2" min="0" max="10" step="1" value="0" oninput="document.getElementById('value2').innerHTML=this.value;">
+							<span id="value2"></span>
+						</div>
+					</td>
+					<td><input type ="submit" value="검색"></td>
+
+				</tr>
+
+			</table>	
+		</form>
 
 		<table>
 			<th>삭제</th>
@@ -61,21 +97,20 @@
 			<th>책상세정보</th>
 			<th>저자</th>
 			<th>가격</th>
-			<th>이미지</th>
+			<th>이미지</th>	
 		<?php
 			error_reporting(E_ALL);
 			ini_set( "display_errors", 1 );
 			$conn =mysqli_connect('localhost','bitnami','1234','book') or die('connection fail');
-			$image_num = $_POST["image_num"];
-
    			$sql1 = "SELECT bookdata.*, upfile.* FROM bookdata INNER JOIN upfile ON bookdata.book_num = upfile.image_num;";
-
    			$result1 = mysqli_query($conn, $sql1);
 
    			while($bookdata_row = mysqli_fetch_array($result1)){
    				echo '<tr>';
    				echo '<td><button type = "submit">삭제</button></td>';
-   				echo '<td><button type = "submit">수정</button></td>';
+   				echo "<td><form method='POST' action='book_list_rewrite_from.php'>
+					<input type='hidden' name='edit_book' value='".$bookdata_row['book_num']."'>
+					<input type='submit' value='수정'></form></td>";
    				echo '<td>'.$bookdata_row['book_num'].'</td>';
    				echo '<td>'.$bookdata_row['category'].'</td>';
    				echo '<td>'.$bookdata_row['cate_dec'].'</td>';
@@ -83,18 +118,10 @@
    				echo '<td>'.$bookdata_row['book_detail'].'</td>';
    				echo '<td>'.$bookdata_row['author'].'</td>';
    				echo '<td>'.$bookdata_row['price'].'</td>';
-   				echo '<td>'?>
-   				<input type = "button" value = "이미지" onclick = "show_image()">
-   				<script>
-   					function show_image(){
-   						window.open("book_image_view.php?image_num=<?php echo $bookdata_row['image_num']?>;")
-   					}
-   				</script>
-   				<?php
+   				echo '<td><img src="book_image_view.php?image_num='.$bookdata_row['book_num'].'" width="100" height="130"/></td>';
    				echo '</tr><br>';
    			}
-
-   		?>
+   			?>
    		</table>
    		</form>
 
