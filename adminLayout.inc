@@ -7,16 +7,21 @@
 			echo "<!DOCTYPE html>";
 
 			echo "<head><meta charset = 'utf-8'/>
-					<title>AdminPage</title>
-					<link rel='stylesheet' type='text/css' href='adminStyle.css'>
-				</head>";
+					<title>AdminPage</title>";
+			echo 	$this->AdminLayoutStyle();
+			echo "</head>";
 
 			echo "<body>";
 			echo	$this->AdminLayoutHeader(); //header 레이아웃
+			echo 	$this->AdminLayoutMenu();
 			echo	$this->AdminLayoutContent(); //content 레이아웃
 			echo	$this->AdminLayoutFooter(); //footer 레이아웃
 			echo "</body>
 				</html>";
+		}
+
+		public function AdminLayoutStyle(){
+			echo "<link rel='stylesheet' type='text/css' href='adminStyle.css'>";
 		}
 
 		//header 레이아웃 
@@ -34,18 +39,19 @@
 				echo"</header>";
 		}
 
-		//content 레이아웃
-		public function AdminLayoutContent(){
-			echo "<section>
-					<ul id = 'menu'>
+		public function AdminLayoutMenu(){
+			echo "<ul id = 'menu'>
 						<li><a href='#'>회원 관리</a></li>
 						<li><a href='#'>상품 관리</a></li>
 						<li><a href='#'>공지/이벤트 관리</a></li>
-					</ul>
-					<article><center>
+			</ul>";
+		}
+
+		//content 레이아웃
+		public function AdminLayoutContent(){
+			echo "<article><center>
 						".$this->content."
-					</center></article>
-				</section>";
+					</center></article>";
 		}
 
 		//footer 레이아웃
