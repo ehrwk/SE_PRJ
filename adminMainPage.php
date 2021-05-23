@@ -1,7 +1,6 @@
 <?php
 	include_once "adminLayout.inc";
 	$admin = new AdminLayout;
-	session_start();
 ?>
 <!DOCTYPE html>
 <html>
