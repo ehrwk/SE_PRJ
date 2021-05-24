@@ -98,7 +98,7 @@
 								<li><a href='#'>역사</a></li>
 							</ul>
 						<li><a href='#'>중고도서</a></li>
-						<li><a href='#'>공지/이벤트</a></li>
+						<li><a href='noticeListBoard.php'>공지/이벤트</a></li>
 					</ul>
 				<script>
 				function DisplayMenu(n){
