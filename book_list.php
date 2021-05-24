@@ -64,9 +64,8 @@
 				<tr>
 					<td><input type="text" name="book_name"></td>
 					<td>
-						<input type="radio" name = "sorting" value="0" <?php echo $row["sorting"]=="0" ? "checked" : "" ?>>정렬x
-						<input type="radio" name = "sorting" value="1" <?php echo $row["sorting"]=="1" ? "checked" : "" ?>>오름차순
-						<input type="radio" name = "sorting" value="2" <?php echo $row["sorting"]=="2" ? "checked" : "" ?>>내림차순
+						<input type="radio" name = "sorting" value="0" checked = "checked"> <?php echo $row["sorting"]=="0" ? "checked" : "" ?>정렬x
+						<input type="radio" name = "sorting" value="1" <?php echo $row["sorting"]=="1" ? "checked" : "" ?>>정렬o(오름차순)
 					</td>
 					<td>
 						<div>
@@ -102,12 +101,14 @@
 			error_reporting(E_ALL);
 			ini_set( "display_errors", 1 );
 			$conn =mysqli_connect('localhost','bitnami','1234','book') or die('connection fail');
-   			$sql1 = "SELECT bookdata.*, upfile.* FROM bookdata INNER JOIN upfile ON bookdata.book_num = upfile.image_num;";
+   			$sql1 = "SELECT bookdata.*, upfile.* FROM bookdata INNER JOIN upfile ON bookdata.book_num = upfile.image_num WHERE is_delete=0;";
    			$result1 = mysqli_query($conn, $sql1);
 
    			while($bookdata_row = mysqli_fetch_array($result1)){
    				echo '<tr>';
-   				echo '<td><button type = "submit">삭제</button></td>';
+   				echo "<td><form method = 'POST' action = 'book_list_delete.php'>
+   					<input type='hidden' name='is_delete' value='".$bookdata_row['book_num']."'>
+   					<input type='submit' value='삭제'></form></td>";
    				echo "<td><form method='POST' action='book_list_rewrite_from.php'>
 					<input type='hidden' name='edit_book' value='".$bookdata_row['book_num']."'>
 					<input type='submit' value='수정'></form></td>";
@@ -121,7 +122,8 @@
    				echo '<td><img src="book_image_view.php?image_num='.$bookdata_row['book_num'].'" width="100" height="130"/></td>';
    				echo '</tr><br>';
    			}
-   			?>
+
+   		?>
    		</table>
    		</form>
 

@@ -35,7 +35,7 @@ $rows=mysqli_fetch_assoc($result);
 
 function basket(){
   $basketbook_amount=$_GET['basketbook_amount'];
-  #$image_num=$_GET['image_num'];
+  $image_num=$_GET['image_num'];
   $price=$_GET['price'];
   $author=$_GET['author'];
   $book_name=$_GET['book_name'];
@@ -46,7 +46,10 @@ function basket(){
   VALUES (null,'$book_name','$author','$price','$basketbook_amount','$id')"; //basketbook_image_num 컬럼 삭제 해서 지우고, id 컬럼 추가해서 넣음
 
   $current_id = mysqli_query($conn_basket, $b_sql) or die("<b>Error:</b>장바구니 에러!<br/>" . mysqli_error($conn_basket));
-
+  if (isset($current_id)) {
+       echo "<script>alert('장바구니 등록되었음');
+       location.reload();</script>";
+  }
 }
  if (array_key_exists('basket', $_GET)) {
    basket();
